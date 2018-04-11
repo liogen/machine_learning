@@ -10,6 +10,22 @@ Goals of this repository
 
 This repository contains several exercises to practice machine learning algorithm through scikit-learn framework. All exercises come from the Linux magazine HS n°94.
 
+Main installation
+-----------------
+
+This project use virtualenvwrapper to create a virtual environment for python.
+
+.. code-block:: bash
+
+    $ sudo -H pip install virtualenvwrapper
+    $ mkdir ~/.virtualenvs
+    $ echo "export WORKON_HOME=~/.virtualenvs" >> ~/.bashrc
+    $ echo "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.bashrc
+    $ bash
+    $ mkvirtualenv machine_learning --python=/usr/bin/python3
+    $ workon machine_learning
+    $ pip install -r requirements.txt
+
 Linear regression
 -----------------
 
@@ -82,3 +98,18 @@ In this exercise, we will use spline to define the different time needed to go t
    :width: 200px
    :height: 100px
    :alt: linear_regression_taxi_nyc_splines_2
+
+Contribute
+----------
+
+This project is distributed under the MIT licence.
+
+To test the quality, run this commands :
+
+.. code-block:: bash
+
+    $ pip install flake8 prospector
+    $ flake8
+    $ prospector -F
+
+To fix a bug, open an issue in github and submit a pull request.
