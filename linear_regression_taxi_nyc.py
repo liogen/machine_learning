@@ -1,6 +1,6 @@
 import pandas as pd
-from dateutil import parser
 import matplotlib.pyplot as plt
+from utils import get_jfk_mu
 
 cols = ['PULocationID', 'DOLocationID', 'tpep_pickup_datetime',
         'tpep_dropoff_datetime', 'trip_distance']
@@ -12,19 +12,7 @@ dfM = pd.read_csv('dataset/yellow_tripdata_2017-03.csv', usecols=cols)
 # dfMy = pd.read_csv('dataset/yellow_tripdata_2017-05.csv', usecols=cols)
 
 df = dfJ.append(dfF).append(dfM)  # .append(dfA).append(dfMy)
-
-# 236 manhattan upper east side
-JFK_MU = df[(df['PULocationID'] == 132) & (df['DOLocationID'] == 236)]
-
-JFK_MU['weekday'] = JFK_MU['tpep_pickup_datetime'].apply(
-        lambda x: parser.parse(x).weekday())
-
-JFK_MU = JFK_MU[JFK_MU['weekday'] < 5]
-
-pu = [parser.parse(dt) for dt in JFK_MU['tpep_pickup_datetime'].values]
-do = [parser.parse(dt) for dt in JFK_MU['tpep_dropoff_datetime'].values]
-dur = [(b - a).total_seconds() / 3600.0 for a, b in zip(pu, do)]
-startTime = [dt.hour + dt.minute / 60.0 for dt in pu]
+startTime, dur = get_jfk_mu(df)
 
 plt.scatter(startTime, dur)
 plt.show()
