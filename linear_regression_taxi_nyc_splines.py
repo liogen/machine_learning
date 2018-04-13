@@ -1,10 +1,7 @@
 import numpy as np
-import math
-from numpy.linalg import inv
 import pandas as pd
-
 import matplotlib.pyplot as plt
-from utils import splinify, get_jfk_mu, get_y_reg
+from utils import splinify, get_jfk_mu, get_y_reg, get_filtered, get_a
 
 nbSamples = 1000
 
@@ -30,22 +27,15 @@ Y = dur
 
 # Find a and b
 Xm = np.matrix([splinify(np.min(X), np.max(X), 1.0, x) for x in X])
-A = inv(Xm.transpose() * Xm) * Xm.transpose() * np.matrix(Y).transpose()
+A = get_a(Xm, np.matrix(Y).transpose())
 Yreg = get_y_reg(A, Xm)
 
-Yfiltered = [Y[i] for i in range(len(Y)) if (
-        (math.fabs((Y[i]-Yreg[i]) / Y[i]) < 0.9) and
-        (Y[i] > 0.2) and
-        (Y[i] < 2.5))]
-Xfiltered = [X[i] for i in range(len(Y)) if (
-        (math.fabs((Y[i]-Yreg[i]) / Y[i]) < 0.9) and
-        (Y[i] > 0.2) and
-        (Y[i] < 2.5))]
+Yfiltered = get_filtered(Y, Y, Yreg)
+Xfiltered = get_filtered(X, Y, Yreg)
 
 Xm = np.matrix([splinify(
     np.min(Xfiltered), np.max(X), 1.0, x) for x in Xfiltered])
-A = inv(Xm.transpose() * Xm) * Xm.transpose() * np.matrix(
-    Yfiltered).transpose()
+A = get_a(Xm, np.matrix(Yfiltered).transpose())
 Yfilteredreg = get_y_reg(A, Xm)
 
 plt.xlabel('Heure Depart (h)')

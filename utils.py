@@ -1,6 +1,9 @@
+import math
 import random
 from dateutil import parser
 import autograd.numpy as np
+from numpy.linalg import inv
+
 
 nbSamples = 1000
 X = np.matrix([[random.random(), 1] for x in range(nbSamples)])
@@ -72,3 +75,14 @@ def get_jfk_mu(df):
 
 def get_y_reg(a, x_spline):
     return np.matrix([[np.dot(x, a).item(0)] for x in x_spline])
+
+
+def get_filtered(val, y, y_reg):
+    return [val[i] for i in range(len(y)) if (
+        (math.fabs((y[i]-y_reg[i]) / y[i]) < 0.9) and
+        (y[i] > 0.2) and
+        (y[i] < 2.5))]
+
+
+def get_a(x, y):
+    return inv(x.transpose() * x) * x.transpose() * y
