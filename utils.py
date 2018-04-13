@@ -7,6 +7,10 @@ X = np.matrix([[random.random(), 1] for x in range(nbSamples)])
 Y = np.matrix([3 * x[0].item(0) + 0.666 for x in X]).transpose()
 
 
+def get_y(x, a):
+    return [[x[0], 1], [x[1], 1]] * a
+
+
 def i_plus(xi, x):
     if x >= xi:
         return x - xi
@@ -64,3 +68,7 @@ def get_jfk_mu(df):
     start_time = [dt.hour + dt.minute / 60.0 for dt in pu]
 
     return start_time, dur
+
+
+def get_y_reg(a, x_spline):
+    return np.matrix([[np.dot(x, a).item(0)] for x in x_spline])

@@ -4,7 +4,7 @@ from numpy.linalg import inv
 import pandas as pd
 
 import matplotlib.pyplot as plt
-from utils import splinify, get_jfk_mu
+from utils import splinify, get_jfk_mu, get_y_reg
 
 nbSamples = 1000
 
@@ -31,7 +31,7 @@ Y = dur
 # Find a and b
 Xm = np.matrix([splinify(np.min(X), np.max(X), 1.0, x) for x in X])
 A = inv(Xm.transpose() * Xm) * Xm.transpose() * np.matrix(Y).transpose()
-Yreg = np.matrix([[np.dot(x, A).item(0)] for x in Xm])
+Yreg = get_y_reg(A, Xm)
 
 Yfiltered = [Y[i] for i in range(len(Y)) if (
         (math.fabs((Y[i]-Yreg[i]) / Y[i]) < 0.9) and
@@ -46,7 +46,7 @@ Xm = np.matrix([splinify(
     np.min(Xfiltered), np.max(X), 1.0, x) for x in Xfiltered])
 A = inv(Xm.transpose() * Xm) * Xm.transpose() * np.matrix(
     Yfiltered).transpose()
-Yfilteredreg = np.matrix([[np.dot(x, A).item(0)] for x in Xm])
+Yfilteredreg = get_y_reg(A, Xm)
 
 plt.xlabel('Heure Depart (h)')
 plt.ylabel('Duree Trajet (h)')

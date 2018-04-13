@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from numpy.linalg import inv
 import numpy as np
+from utils import get_y
 
 df = pd.read_csv('dataset/players_stats.csv')
 
@@ -17,7 +18,7 @@ Y = np.matrix(weight.as_matrix())
 A = inv(Xm.transpose() * Xm) * Xm.transpose() * Y.transpose()
 
 x = [160, 230]
-y = [[x[0], 1], [x[1], 1]] * A
+y = get_y(x, A)
 
 plt.xlabel('Height (cm)')
 plt.ylabel('Weight (kg)')
