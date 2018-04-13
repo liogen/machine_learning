@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from utils import splinify, get_jfk_mu, get_y_reg, get_filtered, get_a
+from utils import get_jfk_mu, get_y_reg, get_filtered, get_a, get_xm
 
 nbSamples = 1000
 
@@ -26,15 +26,14 @@ X = startTime
 Y = dur
 
 # Find a and b
-Xm = np.matrix([splinify(np.min(X), np.max(X), 1.0, x) for x in X])
+Xm = get_xm(X, X)
 A = get_a(Xm, np.matrix(Y).transpose())
 Yreg = get_y_reg(A, Xm)
 
 Yfiltered = get_filtered(Y, Y, Yreg)
 Xfiltered = get_filtered(X, Y, Yreg)
 
-Xm = np.matrix([splinify(
-    np.min(Xfiltered), np.max(X), 1.0, x) for x in Xfiltered])
+Xm = get_xm(Xfiltered, X)
 A = get_a(Xm, np.matrix(Yfiltered).transpose())
 Yfilteredreg = get_y_reg(A, Xm)
 

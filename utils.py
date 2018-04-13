@@ -86,3 +86,8 @@ def get_filtered(val, y, y_reg):
 
 def get_a(x, y):
     return inv(x.transpose() * x) * x.transpose() * y
+
+
+def get_xm(x_var, x_base):
+    return np.matrix([
+        splinify(np.min(x_var), np.max(x_base), 1.0, x) for x in x_var])
