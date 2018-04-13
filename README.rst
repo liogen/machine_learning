@@ -110,6 +110,6 @@ To test the quality, run this commands :
 
     $ pip install flake8 prospector
     $ flake8
-    $ prospector -F
+    $ prospector -F -i dataset/
 
 To fix a bug, open an issue in github and submit a pull request.

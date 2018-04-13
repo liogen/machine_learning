@@ -1,9 +1,6 @@
 import autograd.numpy as np
 from autograd import grad
-
-import math
 import random
-from numpy.linalg import inv
 import matplotlib.pyplot as plt
 
 nbSamples = 1000
@@ -11,14 +8,14 @@ X = np.matrix([[random.random(), 1] for x in range(nbSamples)])
 Y = np.matrix([3 * x[0].item(0) + 0.666 for x in X]).transpose()
 
 
-def error(X, Y, a):
+def error(x_var, y_var, a):
     a = np.matrix([[a], [0.666]])
-    e = X * a - Y
+    e = x_var * a - y_var
     return (e.transpose() * e).item(0)
 
 
-def gen_error(X, Y):
-    return lambda a : error(X, Y, a)
+def gen_error(x_var, y_var):
+    return lambda a: error(x_var, y_var, a)
 
 
 err = gen_error(X, Y)
@@ -29,9 +26,9 @@ plt.plot(xs, e)
 
 plt.show()
 
-# Newton resolution
+# Newton resolution
 
-grad_err = grad(err)
+grad_err = grad(err, 0)
 
 
 def newton_step(f0, df, x0):

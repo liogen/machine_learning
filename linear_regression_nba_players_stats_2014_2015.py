@@ -9,8 +9,8 @@ height = df.dropna()['Height']
 weight = df.dropna()['Weight']
 
 X = np.zeros((len(height), 2))
-X[:,0] = height
-X[:,1] = 1
+X[:, 0] = height
+X[:, 1] = 1
 Xm = np.matrix(X)
 
 Y = np.matrix(weight.as_matrix())
