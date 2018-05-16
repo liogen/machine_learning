@@ -99,6 +99,90 @@ In this exercise, we will use spline to define the different time needed to go t
    :height: 100px
    :alt: linear_regression_taxi_nyc_splines_2
 
+PCA
+---
+
+In this section, we learned how to use PCA, normalized data and reduce variable dimensions.
+
+
+PCA brute force
+~~~~~~~~~~~~~~~
+
+In this exercise, we will use brute force to show all combination of Iris datasets.
+
+.. code-block:: bash
+
+    $ python pca_brute_force.py
+
+.. image:: docs/pca_brute_force_1.png
+   :width: 200px
+   :height: 100px
+   :alt: pca_brute_force_1
+
+.. image:: docs/pca_brute_force_2.png
+   :width: 200px
+   :height: 100px
+   :alt: pca_brute_force_2
+
+.. image:: docs/pca_brute_force_3.png
+   :width: 200px
+   :height: 100px
+   :alt: pca_brute_force_3
+
+.. image:: docs/pca_brute_force_4.png
+   :width: 200px
+   :height: 100px
+   :alt: pca_brute_force_4
+
+.. image:: docs/pca_brute_force_5.png
+   :width: 200px
+   :height: 100px
+   :alt: pca_brute_force_5
+
+.. image:: docs/pca_brute_force_6.png
+   :width: 200px
+   :height: 100px
+   :alt: pca_brute_force_6
+
+PCA 2D
+~~~~~~
+
+In this exercise, we will use a basic linear example to see how to reduce a 2d representation to 1D representation.
+
+.. code-block:: bash
+
+    $ python pca_2d.py
+
+.. image:: docs/pca_2d.png
+   :width: 200px
+   :height: 100px
+   :alt: pca_2d
+
+.. image:: docs/pca_2d_2.png
+   :width: 200px
+   :height: 100px
+   :alt: pca_2d_2
+
+PCA and biplot method on IRIS dataset
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this exercise, we will use PCA and biplot methods to represent of one chart the IRIS dataset.
+
+.. code-block:: bash
+
+    $ python pca_biplot_iris.py
+
+.. image:: docs/pca_biplot_iris_1.png
+   :width: 200px
+   :height: 100px
+   :alt: pca_biplot_iris_1
+
+.. image:: docs/pca_biplot_iris_2.png
+   :width: 200px
+   :height: 100px
+   :alt: pca_biplot_iris_2
+
+
 Contribute
 ----------
 
