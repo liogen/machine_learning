@@ -192,7 +192,7 @@ In this exercise, we will see that unnormalized data could alter PCA analysis.
 
     $ python pca_normalized.py
 
-.. image:: docs/pca_normalizeds_1.png
+.. image:: docs/pca_normalized_1.png
    :width: 200px
    :height: 100px
    :alt: pca_normalized_1
