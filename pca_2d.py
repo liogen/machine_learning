@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-from sklearn import datasets
 from sklearn.decomposition import PCA
 from random import random
 import numpy as np

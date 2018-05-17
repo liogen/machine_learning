@@ -38,6 +38,7 @@ Firstly, we had to download several data sets.
 
 * Download "players_stats.csv" => https://www.kaggle.com/drgilermo/nba-players-stats-20142015/
 * Download "yellow_tripdata_2017_0*" => http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml
+* Download "04cars.dat.txt" => https://ww2.amstat.org/publications/jse/datasets/04cars.dat.txt
 
 NBA player size and weight correlation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -181,6 +182,25 @@ In this exercise, we will use PCA and biplot methods to represent of one chart t
    :width: 200px
    :height: 100px
    :alt: pca_biplot_iris_2
+
+PCA and data normalization
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this exercise, we will see that unnormalized data could alter PCA analysis.
+
+.. code-block:: bash
+
+    $ python pca_normalized.py
+
+.. image:: docs/pca_normalizeds_1.png
+   :width: 200px
+   :height: 100px
+   :alt: pca_normalized_1
+
+.. image:: docs/pca_normalized_2.png
+   :width: 200px
+   :height: 100px
+   :alt: pca_normalized_2
 
 
 Contribute

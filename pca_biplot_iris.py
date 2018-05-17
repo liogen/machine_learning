@@ -16,7 +16,8 @@ colors = ['navy', 'turquoise', 'darkorange']
 lw = 2
 
 for color, i, target_name in zip(colors, [0, 1, 2], target_names):
-    plt.scatter(X_r[y == i, 0], X_r[y == i, 1], color=color, alpha=.8, lw=lw, label=target_name)
+    plt.scatter(X_r[y == i, 0], X_r[y == i, 1], color=color, alpha=.8, lw=lw,
+                label=target_name)
 plt.legend(loc='best', shadow=False, scatterpoints=1)
 plt.xlabel('Composante 1')
 plt.ylabel('Composante 2')
@@ -36,9 +37,9 @@ for i in range(4):
 
 plt.show()
 
-print(np.std(iris.data[y==0][:, 2]))
-print(np.std(iris.data[y==1][:, 2]))
-print(np.std(iris.data[y==2][:, 2]))
-print(np.std(iris.data[y==0][:, 1]))
-print(np.std(iris.data[y==1][:, 1]))
-print(np.std(iris.data[y==2][:, 1]))
+print(np.std(iris.data[y == 0][:, 2]))
+print(np.std(iris.data[y == 1][:, 2]))
+print(np.std(iris.data[y == 2][:, 2]))
+print(np.std(iris.data[y == 0][:, 1]))
+print(np.std(iris.data[y == 1][:, 1]))
+print(np.std(iris.data[y == 2][:, 1]))
