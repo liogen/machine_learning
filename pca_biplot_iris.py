@@ -37,9 +37,6 @@ for i in range(4):
 
 plt.show()
 
-print(np.std(iris.data[y == 0][:, 2]))
-print(np.std(iris.data[y == 1][:, 2]))
-print(np.std(iris.data[y == 2][:, 2]))
-print(np.std(iris.data[y == 0][:, 1]))
-print(np.std(iris.data[y == 1][:, 1]))
-print(np.std(iris.data[y == 2][:, 1]))
+for jndex in [2, 1]:
+    for index in [0, 1, 2]:
+        print(np.std(iris.data[y == index][:, jndex]))
