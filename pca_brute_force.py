@@ -14,7 +14,7 @@ for xx in range(4):
             print(xx, yy)
             plt.xlabel(labels[xx])
             plt.ylabel(labels[yy])
-            plt.scatter(iris.data[y == 0][:, xx], iris.data[y == 0][:, yy])
-            plt.scatter(iris.data[y == 1][:, xx], iris.data[y == 1][:, yy])
-            plt.scatter(iris.data[y == 2][:, xx], iris.data[y == 2][:, yy])
+            for index in [0, 1, 2]:
+                plt.scatter(iris.data[y == index][:, xx],
+                            iris.data[y == index][:, yy])
             plt.show()
